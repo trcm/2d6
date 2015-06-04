@@ -1,0 +1,45 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div id="mainCont" class="container">
+    <div id="content" class="containter col-md-9">
+	<!-- 		<webcam></webcam> -->
+	<!-- 	<h1 ng-model="result">{{ result }}</h1>
+	<button ng-click="rollDie(1, 6)">Roll d6</button>
+	<button ng-click="rollDie(2, 6)">Roll 2d6</button>
+	<button ng-click="rollDie(1, 20)">Roll d20</button>
+	<br/> -->
+	<iframe width="30%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/178067593&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+
+	<div id="cams">
+	    <ul id="remotes">
+		<li class="videoContainer"><video id="localVideo" src=""></video></li>
+	    </ul>
+	</div>
+	
+    </div>
+    <div id="chat" class="container col-md-3">
+	{{ username.name }}
+	<div id="messages" scroll-glue>
+	    <table class="table table-striped">
+		<tr ng-repeat="message in messages">
+		    <td ng-click="deleteMessage(message)">{{ message.user }}: {{ message.text }}</td>
+		</tr>
+	    </table>
+	</div>
+	<div id="chatInput">
+	    <textarea autofocus ng-keypress="typing($event)" cols="30" rows="2" ng-model="newThing" ng-enter="addMessage()" name="" type="text" placeholder="Type your message here." value=""/> <br/>
+	    <button class="btn btn-primary btn-sm" ng-click="addMessage()">Chat</button>
+	</div>
+	<div ng-show="typeUser">
+	    {{ typeUser }} is typing...
+	</div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+	<p>Angular Fullstack v2.0.13 |
+            <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
+            <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
+    </div>
+</footer>

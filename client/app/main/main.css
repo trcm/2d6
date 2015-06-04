@@ -1,0 +1,79 @@
+.thing-form {
+    margin: 20px 0;
+}
+
+#mainCont {
+	height: 100%hv;
+	min-height: 500px;
+	width: 80%;
+}
+
+#content {
+	postion: relative;
+	max-height: 674px;
+	min-height: 674px;
+}
+
+#messages {
+	max-height: 600px;
+	min-height: 600px;
+	list-style: none;
+}
+
+#messages {
+	overflow: hidden;
+	overflow-y:scroll;
+}
+
+#cams {
+	position: absolute;
+	bottom: 0;
+}
+
+#remotes li {
+	display: inline;
+}
+
+.videoContainer {
+	height: 120px;
+	list-style: none;
+}
+
+.videoContainer video {
+	height: 120px;
+}
+
+#localVideo {
+	height: 120px;
+}
+
+#chatInput {
+	margin-top: 20px;
+}
+
+#banner {
+    border-bottom: none;
+    margin-top: -20px;
+}
+
+#banner h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.hero-unit {
+    position: relative;
+    padding: 30px 15px;
+    color: #F5F5F5;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background: #4393B9;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
+}
