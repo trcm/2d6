@@ -6,6 +6,10 @@
 
 var errors = require('./components/errors');
 
+var dgram = require('dgram');
+var client = dgram.createSocket('udp4');
+client.bind(6666);
+
 module.exports = function(app) {
 
   // Insert routes below
@@ -18,8 +22,21 @@ module.exports = function(app) {
   
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')
-   .get(errors[404]);
+    .get(errors[404]);
 
+  app.route('/udp')
+    .post(function(req, res) {
+      console.log(req.body.message.length);
+      console.log(req.body.message);
+      if (req.body.message.length > 16) {
+	res.send({"ERROR": "Message was too long, yo."});
+	return;
+      } 
+      var message = new Buffer (req.body.message);
+      client.send(message, 0, message.length, 8888, '123.243.161.70');
+      res.status(200).send({"Status": "Message was sent"});
+    });
+  
   // All other routes should redirect to the index.html
   app.route('/*')
     .get(function(req, res) {

@@ -1,11 +1,17 @@
 'use strict';
 
 angular.module('rollMeanApp')
+  .filter('reverse', function() {
+    return function(items) {
+      return items.slice().reverse; 
+    };
+  })
   .controller('MainCtrl', function ($scope, Auth, $http, $window, $sce, socket, lodash) {
     var TYPING_TIMER_LENGTH = 400;
     
     $scope.remotes = [];
-    
+
+    $scope.udpMessages = [];
     $scope.glued = true;
     $scope.username = Auth.getCurrentUser().name;
     if (lodash.isEmpty(Auth.getCurrentUser())) {
@@ -26,6 +32,14 @@ angular.module('rollMeanApp')
       console.log($scope.messages);
       socket.syncUpdates('messages', $scope.messages);
     });
+
+    $scope.sendMessage = function() {
+      $scope.udpMessage = {"time": Date.now(), "message" : $scope.udpMessage};
+      $http.post('/udp', {"message" : $scope.udpMessage.message });
+      $scope.udpMessages.push($scope.udpMessage);
+      console.log($scope.udpMessages);
+      $scope.udpMessage = '';
+    };
     
     // dice roller, could probably be improved
     function dice(num, die, mod, modNum) {

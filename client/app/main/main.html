@@ -7,33 +7,42 @@
 	<button ng-click="rollDie(1, 6)">Roll d6</button>
 	<button ng-click="rollDie(2, 6)">Roll 2d6</button>
 	<button ng-click="rollDie(1, 20)">Roll d20</button>
-	<br/> -->
-	<iframe width="30%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/178067593&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+	<br/><!--  --> 
+	<form ng-submit="sendMessage()">
+	    <input ng-model="udpMessage" name="" placeholder="Type your message here..." type="text" value=""/><br/>
+	    <input name="" type="submit" value="Send"/>
+	</form>
+	<table class="table table-striped">
+	    <tr ng-repeat="m in udpMessages | orderBy: '-time'">
+		<td>{{ m.message }}</td>
+	    </tr>
+	</table>
+	<!-- <iframe width="30%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/178067593&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe> -->
 
-	<div id="cams">
-	    <ul id="remotes">
-		<li class="videoContainer"><video id="localVideo" src=""></video></li>
-	    </ul>
-	</div>
+	<!-- <div id="cams"> -->
+	<!--     <ul id="remotes"> -->
+	<!-- 	<li class="videoContainer"><video id="localVideo" src=""></video></li> -->
+	<!--     </ul> -->
+	<!-- </div> -->
 	
     </div>
-    <div id="chat" class="container col-md-3">
-	{{ username.name }}
-	<div id="messages" scroll-glue>
-	    <table class="table table-striped">
-		<tr ng-repeat="message in messages">
-		    <td ng-click="deleteMessage(message)">{{ message.user }}: {{ message.text }}</td>
-		</tr>
-	    </table>
-	</div>
-	<div id="chatInput">
-	    <textarea autofocus ng-keypress="typing($event)" cols="30" rows="2" ng-model="newThing" ng-enter="addMessage()" name="" type="text" placeholder="Type your message here." value=""/> <br/>
-	    <button class="btn btn-primary btn-sm" ng-click="addMessage()">Chat</button>
-	</div>
-	<div ng-show="typeUser">
-	    {{ typeUser }} is typing...
-	</div>
-    </div>
+    <!-- <div id="chat" class="container col-md-3"> -->
+    <!-- 	{{ username.name }} -->
+    <!-- 	<div id="messages" scroll-glue> -->
+    <!-- 	    <table class="table table-striped"> -->
+    <!-- 		<tr ng-repeat="message in messages"> -->
+    <!-- 		    <td ng-click="deleteMessage(message)">{{ message.user }}: {{ message.text }}</td> -->
+    <!-- 		</tr> -->
+    <!-- 	    </table> -->
+    <!-- 	</div> -->
+    <!-- 	<div id="chatInput"> -->
+    <!-- 	    <textarea autofocus ng-keypress="typing($event)" cols="30" rows="2" ng-model="newThing" ng-enter="addMessage()" name="" type="text" placeholder="Type your message here." value=""/> <br/> -->
+    <!-- 	    <button class="btn btn-primary btn-sm" ng-click="addMessage()">Chat</button> -->
+    <!-- 	</div> -->
+    <!-- 	<div ng-show="typeUser"> -->
+    <!-- 	    {{ typeUser }} is typing... -->
+    <!-- 	</div> -->
+    <!-- </div> -->
 </div>
 
 <footer class="footer">
